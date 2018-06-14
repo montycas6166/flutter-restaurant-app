@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:potbelly/routes/router.dart';
+import 'package:potbelly/routes/router.gr.dart';
 import 'package:potbelly/screens/filter_screen.dart';
 import 'package:potbelly/screens/search_results.dart';
 import 'package:potbelly/screens/trending_restaurant_screen.dart';
+import 'package:potbelly/utils/navigation.dart';
 import 'package:potbelly/values/values.dart';
 import 'package:potbelly/values/data.dart';
 import 'package:potbelly/widgets/category_card.dart';
@@ -9,35 +12,15 @@ import 'package:potbelly/widgets/foody_bite_card.dart';
 import 'package:potbelly/widgets/heading_row.dart';
 import 'package:potbelly/widgets/search_input_field.dart';
 
+import 'categories_screen.dart';
 import 'restaurant_details_screen.dart';
-
-class SearchValue {
-  final String value;
-
-  SearchValue(this.value);
-}
-
-class RestaurantDetails {
-  final String imagePath;
-  final String restaurantName;
-  final String restaurantAddress;
-  final String category;
-  final String distance;
-  final String rating;
-
-  RestaurantDetails({
-    @required this.imagePath,
-    @required this.restaurantName,
-    @required this.restaurantAddress,
-    @required this.category,
-    @required this.distance,
-    @required this.rating,
-  });
-}
 
 class HomeScreen extends StatelessWidget {
   static const String ROUTE_NAME = StringConst.HOME_ROUTE;
   static const int TAB_NO = 0;
+
+  HomeScreen({Key key}) : super(key: key);
+
   TextEditingController controller = TextEditingController();
 
   @override
@@ -59,23 +42,22 @@ class HomeScreen extends StatelessWidget {
                     Styles.customNormalTextStyle(color: AppColors.accentText),
                 suffixIconImagePath: ImagePath.settingsIcon,
                 borderWidth: 0.0,
-                onTapOfLeadingIcon: () => Navigator.pushNamed(
-                  context,
-                  SearchResultsScreen.ROUTE_NAME,
+                onTapOfLeadingIcon: () => Router.navigator.pushNamed(
+                  Router.searchResultsScreen,
                   arguments: SearchValue(
                     controller.text,
                   ),
                 ),
                 onTapOfSuffixIcon: () =>
-                    Navigator.pushNamed(context, FilterScreen.ROUTE_NAME),
+                    Router.navigator.pushNamed(Router.filterScreen),
                 borderStyle: BorderStyle.solid,
               ),
               SizedBox(height: 16.0),
               HeadingRow(
                 title: StringConst.TRENDING_RESTAURANTS,
                 number: StringConst.SEE_ALL_45,
-                onTapOfNumber: () => Navigator.pushNamed(
-                    context, TrendingRestaurantsScreen.ROUTE_NAME),
+                onTapOfNumber: () => Router.navigator
+                    .pushNamed(Router.trendingRestaurantsScreen),
               ),
               SizedBox(height: 16.0),
               Container(
@@ -88,9 +70,8 @@ class HomeScreen extends StatelessWidget {
                       return Container(
                         margin: EdgeInsets.only(right: 4.0),
                         child: FoodyBiteCard(
-                          onTap: () => Navigator.pushNamed(
-                            context,
-                            RestaurantDetailsScreen.ROUTE_NAME,
+                          onTap: () => Router.navigator.pushNamed(
+                            Router.restaurantDetailsScreen,
                             arguments: RestaurantDetails(
                               imagePath: imagePaths[index],
                               restaurantName: restaurantNames[index],
@@ -113,19 +94,23 @@ class HomeScreen extends StatelessWidget {
               ),
               SizedBox(height: 16.0),
               HeadingRow(
-                  title: StringConst.CATEGORY, number: StringConst.SEE_ALL_9),
+                title: StringConst.CATEGORY,
+                number: StringConst.SEE_ALL_9,
+                onTapOfNumber: () =>
+                    Router.navigator.pushNamed(Router.categoriesScreen),
+              ),
               SizedBox(height: 16.0),
               Container(
                 height: 100,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 6,
+                  itemCount: categoryImagePaths.length,
                   itemBuilder: (context, index) {
                     return Container(
                       margin: EdgeInsets.only(right: 8.0),
                       child: FoodyBiteCategoryCard(
                         imagePath: categoryImagePaths[index],
-                        decoration: decorations[index],
+                        gradient: gradients[index],
                         category: category[index],
                       ),
                     );

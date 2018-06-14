@@ -30,6 +30,7 @@ class StringConst {
   static const String CATEGORY = "Category";
   static const String FRIENDS = "Friends";
   static const String MENU_AND_PHOTOS = "Menu & Photos";
+  static const String PREVIEW = "Preview";
   static const String REVIEWS_AND_RATINGS = "Reviews & Ratings";
   static const String SEE_ALL_32 = "See all (32)";
   static const String SEE_ALL_45 = "See all (45)";
@@ -42,8 +43,13 @@ class StringConst {
   //Categories
   static const String ITALIAN = "Italian";
   static const String CHINESE = "Chinese";
-  static const String AMERICAN = "American";
   static const String MEXICAN = "Mexican";
+  static const String THAI = "Thai";
+  static const String ARABIAN = "Arabian";
+  static const String INDIAN = "Indian";
+  static const String AMERICAN = "American";
+  static const String KOREAN = "Korean";
+
   //Routes
   static const String LOGIN_ROUTE = "/login";
   static const String REGISTER_ROUTE = "/register";
@@ -55,12 +61,14 @@ class StringConst {
   static const String SEARCH_RESULTS_ROUTE = "/searchResults";
   static const String BOOKMARKS_ROUTE = "/bookmarks";
   static const String NOTIFICATIONS_ROUTE = "/notifications";
+  static const String PREVIEW_MENU_PHOTOS_ROUTE = "/previewMenuPhotos";
   static const String PROFILE_ROUTE = "/profile";
   static const String RESTAURANT_DETAILS_ROUTE = "/restaurantDetail";
   static const String MENU_PHOTOS_ROUTE = "/menuPhotos";
   static const String REVIEW_RATING_ROUTE = "/reviewRating";
   static const String ADD_RATINGS_ROUTE = "/addRatings";
   static const String FILTER_ROUTE = "/filter";
+  static const String CATEGORIES_ROUTE = "/categories";
 
   //Font Family
   static const String FONT_FAMILY = "Josefin Sans";
