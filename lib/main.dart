@@ -1,25 +1,17 @@
+
 import 'package:flutter/material.dart';
+import 'package:potbelly/change_language_widget/change_language_widget.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(App());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
+class App extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
+  
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        body: Container(
-          child: Center(
-            child: Text('Welcome to your starter app'),
-          ),
-        ),
-      ),
+      home: ChangeLanguageWidget(),
     );
   }
 }
-
-
