@@ -168,11 +168,10 @@ class HomeWidget extends StatelessWidget {
                           child: Text(
                             "Trending Restaurants",
                             textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 34, 36, 85),
-                              fontFamily: "Josefin Sans",
-                              fontWeight: FontWeight.w400,
-                              fontSize: 20,
+                            style: Styles.customTitleTextStyle(
+                              color: AppColors.headingText,
+                              fontWeight: FontWeight.w600,
+                              fontSize: Sizes.TEXT_SIZE_20,
                             ),
                           ),
                         ),
@@ -1311,7 +1310,7 @@ class HomeWidget extends StatelessWidget {
                                 child: Container(
                                   height: 79,
                                   decoration: BoxDecoration(
-                                    color: AppColors.primaryBackground,
+                                    color: AppColors.primaryColor,
                                     border: Border.all(
                                       width: 0.33333,
                                       color: Color.fromARGB(255, 243, 243, 243),
@@ -1342,7 +1341,7 @@ class HomeWidget extends StatelessWidget {
                                         width: 76,
                                         height: 72,
                                         decoration: BoxDecoration(
-                                          color: AppColors.primaryBackground,
+                                          color: AppColors.primaryColor,
                                           borderRadius: BorderRadius.all(Radius.circular(26.66667)),
                                         ),
                                         child: Container(),
@@ -1411,7 +1410,7 @@ class HomeWidget extends StatelessWidget {
                                         width: 76,
                                         height: 72,
                                         decoration: BoxDecoration(
-                                          color: AppColors.primaryBackground,
+                                          color: AppColors.primaryColor,
                                         ),
                                         child: Container(),
                                       ),
