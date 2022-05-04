@@ -25,6 +25,7 @@ class ImagePath {
   static const String activeBookmarksIcon = "$imageDir/bookmarks_icon_selected.png";
   static const String activeBookmarksIcon2 = "$imageDir/bookmarks_icon_selected_2.png";
   static const String starIcon = "$imageDir/star_icon.png";
+  static const String closeIcon = "$imageDir/close_icon.png";
   static const String searchIconBlue = "$imageDir/search_icon_blue.png";
 
   //High quality pictures
@@ -33,6 +34,9 @@ class ImagePath {
   static const String salad = "$imageDir/salad.png";
   static const String breakfastInBed = "$imageDir/breakfast_in_bed.png";
   static const String dinnerIsServed = "$imageDir/dinner_served.png";
+  static const String pasta = "$imageDir/pasta.png";
+
+
   static const String friends1 = "$imageDir/friends_1.png";
   static const String friends2 = "$imageDir/friends_2.png";
   static const String friends3 = "$imageDir/friends_3.png";
@@ -42,6 +46,16 @@ class ImagePath {
   static const String profile3 = "$imageDir/profile_3.png";
   static const String profile4 = "$imageDir/profile_4.png";
 
+  //Users
+  static const String branson = "$imageDir/branson.png";
+  static const String juliet = "$imageDir/juliet.png";
+  static const String andy = "$imageDir/andy.png";
+  static const String anabel = "$imageDir/anabel.png";
+  static const String ashlee = "$imageDir/ashlee.png";
+  static const String duke = "$imageDir/duke.png";
+  static const String deven = "$imageDir/deven.png";
+  static const String john = "$imageDir/john.png";
+  static const String briana = "$imageDir/briana.jpg";
   //Categories
   static const String italian = "$imageDir/italian.png";
   static const String chinese = "$imageDir/chinese.png";

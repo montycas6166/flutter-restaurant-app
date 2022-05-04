@@ -49,8 +49,12 @@ class StringConst {
   static const String ROOT_ROUTE = "/root";
   static const String HOME_ROUTE = "/home";
   static const String TRENDING_RESTAURANTS_ROUTE = "/trendingRestaurants";
+  static const String SEARCH_RESULTS_ROUTE = "/searchResults";
   static const String BOOKMARKS_ROUTE = "/bookmarks";
+  static const String NOTIFICATIONS_ROUTE = "/notifications";
+  static const String PROFILE_ROUTE = "/profile";
   static const String RESTAURANT_DETAIL_ROUTE = "/restaurantDetail";
+  static const String FILTER_ROUTE = "/filter";
 
   //Font Family
   static const String FONT_FAMILY = "Josefin Sans";

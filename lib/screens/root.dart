@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:potbelly/screens/forgot_password_screen.dart';
-import 'package:potbelly/screens/login_screen.dart';
-import 'package:potbelly/screens/register_screen.dart';
+import 'package:potbelly/screens/profile_screen.dart';
 import 'package:potbelly/values/values.dart';
 
 import 'bookmarks_screen.dart';
 import 'home_screen.dart';
+import 'notification_screen.dart';
 
 class Root extends StatefulWidget {
   static const String ROUTE_NAME = StringConst.ROOT_ROUTE;
@@ -91,14 +90,14 @@ class _RootState extends State<Root> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   bottomNavigationIcon(
-                    destination: ForgotPasswordScreen(),
+                    destination: NotificationsScreen(),
                     currentTab: 2,
                     activeIcon: ImagePath.activeNotificationIcon,
                     nonActiveIcon: ImagePath.notificationIcon,
                   ),
                   SizedBox(width: 40),
                   bottomNavigationIcon(
-                    destination: LoginScreen(),
+                    destination: ProfileScreen(),
                     currentTab: 3,
                     activeIcon: ImagePath.activePersonIcon,
                     nonActiveIcon: ImagePath.personGreyIcon,
