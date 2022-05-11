@@ -29,6 +29,9 @@ class StringConst {
   static const String TRENDING_RESTAURANTS = "Trending Restaurants";
   static const String CATEGORY = "Category";
   static const String FRIENDS = "Friends";
+  static const String MENU_AND_PHOTOS = "Menu & Photos";
+  static const String REVIEWS_AND_RATINGS = "Reviews & Ratings";
+  static const String SEE_ALL_32 = "See all (32)";
   static const String SEE_ALL_45 = "See all (45)";
   static const String SEE_ALL_9 = "See all (9)";
   static const String SEE_ALL_56 = "See all (56)";
@@ -53,7 +56,10 @@ class StringConst {
   static const String BOOKMARKS_ROUTE = "/bookmarks";
   static const String NOTIFICATIONS_ROUTE = "/notifications";
   static const String PROFILE_ROUTE = "/profile";
-  static const String RESTAURANT_DETAIL_ROUTE = "/restaurantDetail";
+  static const String RESTAURANT_DETAILS_ROUTE = "/restaurantDetail";
+  static const String MENU_PHOTOS_ROUTE = "/menuPhotos";
+  static const String REVIEW_RATING_ROUTE = "/reviewRating";
+  static const String ADD_RATINGS_ROUTE = "/addRatings";
   static const String FILTER_ROUTE = "/filter";
 
   //Font Family

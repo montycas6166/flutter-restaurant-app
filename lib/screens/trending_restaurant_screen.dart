@@ -13,7 +13,7 @@ class TrendingRestaurantsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void navigateToDetailScreen() {
-      Navigator.pushNamed(context, RestaurantDetailScreen.ROUTE_NAME);
+      Navigator.pushNamed(context, RestaurantDetailsScreen.ROUTE_NAME);
     }
 
     return Scaffold(
@@ -26,6 +26,7 @@ class TrendingRestaurantsScreen extends StatelessWidget {
             color: AppColors.headingText,
           ),
         ),
+        centerTitle: true,
         title: Text(
           'Trending Restaurant',
           style: Styles.customTitleTextStyle(
