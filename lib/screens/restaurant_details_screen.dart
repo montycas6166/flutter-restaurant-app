@@ -1,6 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:potbelly/routes/router.dart';
+import 'package:potbelly/routes/router.gr.dart';
 import 'package:potbelly/screens/add_ratings_screen.dart';
 import 'package:potbelly/screens/review_rating_screen.dart';
 import 'package:potbelly/values/data.dart';
@@ -16,6 +19,10 @@ import 'menu_photos_screen.dart';
 
 class RestaurantDetailsScreen extends StatelessWidget {
   static const String ROUTE_NAME = StringConst.RESTAURANT_DETAILS_ROUTE;
+
+  final RestaurantDetails restaurantDetails;
+
+  RestaurantDetailsScreen({@required this.restaurantDetails});
 
   TextStyle addressTextStyle = Styles.customNormalTextStyle(
     color: AppColors.accentText,
@@ -41,14 +48,14 @@ class RestaurantDetailsScreen extends StatelessWidget {
     bottomRightRadius: 24,
   );
   BoxDecoration leftSideDecorations =
-  Decorations.customHalfCurvedButtonDecoration(
+      Decorations.customHalfCurvedButtonDecoration(
     color: Colors.black.withOpacity(0.1),
     topleftRadius: 24,
     bottomleftRadius: 24,
   );
 
   BoxDecoration rightSideDecorations =
-  Decorations.customHalfCurvedButtonDecoration(
+      Decorations.customHalfCurvedButtonDecoration(
     color: Colors.black.withOpacity(0.1),
     topRightRadius: 24,
     bottomRightRadius: 24,
@@ -56,14 +63,8 @@ class RestaurantDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final RestaurantDetails args = ModalRoute
-        .of(context)
-        .settings
-        .arguments;
-    var heightOfStack = MediaQuery
-        .of(context)
-        .size
-        .height / 2.8;
+//    final RestaurantDetails args = ModalRoute.of(context).settings.arguments;
+    var heightOfStack = MediaQuery.of(context).size.height / 2.8;
     var aPieceOfTheHeightOfStack = heightOfStack - heightOfStack / 3.5;
     return Scaffold(
       body: SafeArea(
@@ -75,15 +76,11 @@ class RestaurantDetailsScreen extends StatelessWidget {
                   shrinkWrap: true,
                   children: <Widget>[
                     Stack(
-
                       children: <Widget>[
                         Positioned(
                           child: Image.asset(
-                            args.imagePath,
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width,
+                            restaurantDetails.imagePath,
+                            width: MediaQuery.of(context).size.width,
                             height: heightOfStack,
                             fit: BoxFit.cover,
                           ),
@@ -95,15 +92,13 @@ class RestaurantDetailsScreen extends StatelessWidget {
                             child: Row(
                               children: <Widget>[
                                 InkWell(
-                                  onTap: () => Navigator.pop(context),
+                                  onTap: () => Router.navigator.pop(),
                                   child: Image.asset(ImagePath.arrowBackIcon),
                                 ),
                                 Spacer(flex: 1),
                                 InkWell(
-                                  child: Image.asset(
-                                    ImagePath.bookmarksIcon,
-                                    color: Colors.white,
-                                  ),
+                                  child: Image.asset(ImagePath.bookmarksIcon,
+                                      color: Colors.white),
                                 ),
                                 SizedBox(width: 16.0),
                                 InkWell(
@@ -123,7 +118,7 @@ class RestaurantDetailsScreen extends StatelessWidget {
                             child: BackdropFilter(
                               filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                               child: Container(
-                                padding: EdgeInsets.symmetric( vertical: 4.0),
+                                padding: EdgeInsets.symmetric(vertical: 4.0),
                                 decoration: fullDecorations,
                                 child: Row(
                                   children: <Widget>[
@@ -131,12 +126,9 @@ class RestaurantDetailsScreen extends StatelessWidget {
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 8.0, vertical: 8.0),
                                       width:
-                                      (MediaQuery
-                                          .of(context)
-                                          .size
-                                          .width /
-                                          2) -
-                                          24,
+                                          (MediaQuery.of(context).size.width /
+                                                  2) -
+                                              24,
 //                                      decoration: leftSideDecorations,
                                       child: Row(
                                         children: <Widget>[
@@ -145,8 +137,7 @@ class RestaurantDetailsScreen extends StatelessWidget {
                                           SizedBox(width: 8.0),
                                           Text(
                                             '+233 549546967',
-                                            style:
-                                            Styles.normalTextStyle,
+                                            style: Styles.normalTextStyle,
                                           )
                                         ],
                                       ),
@@ -175,8 +166,8 @@ class RestaurantDetailsScreen extends StatelessWidget {
                                           Image.asset(ImagePath.directionIcon),
                                           SizedBox(width: 8.0),
                                           Text(
-                                              'Direction',
-                                              style: Styles.normalTextStyle ,
+                                            'Direction',
+                                            style: Styles.normalTextStyle,
                                           )
                                         ],
                                       ),
@@ -200,7 +191,7 @@ class RestaurantDetailsScreen extends StatelessWidget {
                               Row(
                                 children: <Widget>[
                                   Text(
-                                    args.restaurantName,
+                                    restaurantDetails.restaurantName,
                                     textAlign: TextAlign.left,
                                     style: Styles.customTitleTextStyle(
                                       color: AppColors.headingText,
@@ -210,7 +201,7 @@ class RestaurantDetailsScreen extends StatelessWidget {
                                   ),
                                   SizedBox(width: 4.0),
                                   CardTags(
-                                    title: args.category,
+                                    title: restaurantDetails.category,
                                     decoration: BoxDecoration(
                                       gradient: Gradients.secondaryGradient,
                                       boxShadow: [
@@ -222,7 +213,7 @@ class RestaurantDetailsScreen extends StatelessWidget {
                                   ),
                                   SizedBox(width: 4.0),
                                   CardTags(
-                                    title: args.distance,
+                                    title: restaurantDetails.distance,
                                     decoration: BoxDecoration(
                                       color: Color.fromARGB(255, 132, 141, 255),
                                       borderRadius: BorderRadius.all(
@@ -230,12 +221,12 @@ class RestaurantDetailsScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Spacer(flex: 1),
-                                  RatingsWidget(args.rating)
+                                  RatingsWidget(restaurantDetails.rating)
                                 ],
                               ),
                               SizedBox(height: 16.0),
                               Text(
-                                args.restaurantAddress,
+                                restaurantDetails.restaurantAddress,
                                 style: addressTextStyle,
                               ),
                               SizedBox(height: 8.0),
@@ -243,27 +234,24 @@ class RestaurantDetailsScreen extends StatelessWidget {
                                   text: TextSpan(
                                       style: openingTimeTextStyle,
                                       children: [
-                                        TextSpan(text: "Open Now "),
-                                        TextSpan(
-                                            text: "daily time ",
-                                            style: addressTextStyle),
-                                        TextSpan(text: "9:30 am to 11:30 am "),
-                                      ]))
+                                    TextSpan(text: "Open Now "),
+                                    TextSpan(
+                                        text: "daily time ",
+                                        style: addressTextStyle),
+                                    TextSpan(text: "9:30 am to 11:30 am "),
+                                  ]))
                             ],
                           ),
                           SizedBox(height: 16.0),
                           HeadingRow(
                             title: StringConst.MENU_AND_PHOTOS,
                             number: StringConst.SEE_ALL_32,
-                            onTapOfNumber: () => Navigator.pushNamed(context, MenuPhotosScreen.ROUTE_NAME),
+                            onTapOfNumber: () => Router.navigator.pushNamed(Router.menuPhotosScreen),
                           ),
                           SizedBox(height: 16.0),
                           Container(
                             height: 120,
-                            width: MediaQuery
-                                .of(context)
-                                .size
-                                .width,
+                            width: MediaQuery.of(context).size.width,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: 4,
@@ -272,7 +260,7 @@ class RestaurantDetailsScreen extends StatelessWidget {
                                   margin: EdgeInsets.only(right: 12.0),
                                   decoration: BoxDecoration(
                                       borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
+                                          BorderRadius.all(Radius.circular(8))),
                                   child: Image.asset(
                                     menuPhotosImagePaths[index],
                                     fit: BoxFit.fill,
@@ -286,9 +274,7 @@ class RestaurantDetailsScreen extends StatelessWidget {
                           HeadingRow(
                             title: StringConst.REVIEWS_AND_RATINGS,
                             number: StringConst.SEE_ALL_32,
-                            onTapOfNumber: () =>
-                                Navigator.pushNamed(
-                                    context, ReviewRatingScreen.ROUTE_NAME),
+                            onTapOfNumber: () => Router.navigator.pushNamed(Router.reviewRatingScreen),
                           ),
                           SizedBox(height: 16.0),
                           Column(
@@ -303,16 +289,12 @@ class RestaurantDetailsScreen extends StatelessWidget {
               ),
               PotbellyButton(
                 'Rate Your Experience ',
-                onTap: () =>
-                    Navigator.pushNamed(context, AddRatingsScreen.ROUTE_NAME),
+                onTap: () => Router.navigator.pushNamed(Router.addRatingsScreen),
                 buttonHeight: 65,
-                buttonWidth: MediaQuery
-                    .of(context)
-                    .size
-                    .width,
+                buttonWidth: MediaQuery.of(context).size.width,
                 decoration: Decorations.customHalfCurvedButtonDecoration(
-                  topleftRadius: Sizes.BORDER_RADIUS_24,
-                  topRightRadius: Sizes.BORDER_RADIUS_24,
+                  topleftRadius: Sizes.RADIUS_24,
+                  topRightRadius: Sizes.RADIUS_24,
                 ),
               ),
             ],

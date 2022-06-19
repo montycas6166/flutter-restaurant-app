@@ -5,6 +5,7 @@ import 'package:potbelly/widgets/potbelly_button.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const String ROUTE_NAME = StringConst.NOTIFICATIONS_ROUTE;
+  ProfileScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +80,7 @@ class ProfileScreen extends StatelessWidget {
                         color: Colors.grey[400],
                       ),
                       borderRadius: BorderRadius.all(
-                        Radius.circular(Sizes.BORDER_RADIUS_8),
+                        Radius.circular(Sizes.RADIUS_8),
                       ),
                     ),
                     buttonTextStyle: Styles.customNormalTextStyle(

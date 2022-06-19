@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:potbelly/routes/router.gr.dart';
 import 'package:potbelly/values/values.dart';
+
+import 'preview_menu_photos.dart';
 
 class MenuPhotosScreen extends StatelessWidget {
   static const String ROUTE_NAME = StringConst.MENU_PHOTOS_ROUTE;
@@ -19,7 +22,7 @@ class MenuPhotosScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0.0,
         leading: InkWell(
-          onTap: () => Navigator.pop(context),
+          onTap: () => Router.navigator.pop(),
           child: Image.asset(
             ImagePath.arrowBackIcon,
             color: AppColors.headingText,
@@ -40,75 +43,96 @@ class MenuPhotosScreen extends StatelessWidget {
             horizontal: Sizes.MARGIN_16, vertical: Sizes.MARGIN_16),
         child: ListView(
           children: <Widget>[
-            straightLineImageRow(imageWidth: widthOfSmallImage),
+            straightLineImageRow(
+                imageWidth: widthOfSmallImage, context: context),
             SizedBox(height: Sizes.MARGIN_16),
             gridImageRow(
-              widthOfSmallImage: widthOfSmallImage,
-              widthOfLargeImage: widthOfLargeImage,
-            ),
+                widthOfSmallImage: widthOfSmallImage,
+                widthOfLargeImage: widthOfLargeImage,
+                context: context),
             SizedBox(height: Sizes.MARGIN_16),
             straightLineImageRow(imageWidth: widthOfSmallImage),
             SizedBox(height: Sizes.MARGIN_16),
-            fullWidth(width: widthOfScreen)
+            fullWidth(width: widthOfScreen, context: context)
           ],
         ),
       ),
     );
   }
 
-  Widget straightLineImageRow({@required double imageWidth}) {
+  Widget straightLineImageRow({
+    @required double imageWidth,
+    @required BuildContext context,
+  }) {
     return Row(
-        children: createImageRow(numberOfImages: 3, imageWidth: imageWidth));
+      children: createImageRow(
+        numberOfImages: 3,
+        imageWidth: imageWidth,
+        context: context,
+      ),
+    );
   }
 
   Widget gridImageRow({
     @required double widthOfSmallImage,
     @required double widthOfLargeImage,
+    @required BuildContext context,
   }) {
     return Row(
       children: <Widget>[
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(Sizes.BORDER_RADIUS_8),
-              child: Image.asset(
-                ImagePath.avocado,
-                width: widthOfSmallImage,
-                height: heightForSmallImages,
-                fit: BoxFit.fitHeight,
+            InkWell(
+              onTap: () => navigateToPreviewPhotos(context),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(Sizes.RADIUS_8),
+                child: Image.asset(
+                  ImagePath.avocado,
+                  width: widthOfSmallImage,
+                  height: heightForSmallImages,
+                  fit: BoxFit.fitHeight,
+                ),
               ),
             ),
             SizedBox(height: Sizes.MARGIN_16),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(Sizes.BORDER_RADIUS_8),
-              child: Image.asset(
-                ImagePath.strawberries,
-                width: widthOfSmallImage,
-                height: heightForSmallImages,
-                fit: BoxFit.fitHeight,
+            InkWell(
+              onTap: () => navigateToPreviewPhotos(context),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(Sizes.RADIUS_8),
+                child: Image.asset(
+                  ImagePath.strawberries,
+                  width: widthOfSmallImage,
+                  height: heightForSmallImages,
+                  fit: BoxFit.fitHeight,
+                ),
               ),
             ),
           ],
         ),
         SizedBox(width: Sizes.MARGIN_16),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(Sizes.BORDER_RADIUS_8),
-          child: Image.asset(
-            ImagePath.cake_big,
-            width: widthOfLargeImage,
-            fit: BoxFit.fitHeight,
-            height: heightForBigImages + Sizes.MARGIN_16,
+        InkWell(
+          onTap: () => navigateToPreviewPhotos(context),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(Sizes.RADIUS_8),
+            child: Image.asset(
+              ImagePath.cake_big,
+              width: widthOfLargeImage,
+              fit: BoxFit.fitHeight,
+              height: heightForBigImages + Sizes.MARGIN_16,
+            ),
           ),
         )
       ],
     );
   }
 
-  Widget fullWidth({@required width, height = 200.0}) {
+  Widget fullWidth(
+      {@required width, height = 200.0, @required BuildContext context}) {
     return InkWell(
+      onTap: () => navigateToPreviewPhotos(context),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(Sizes.BORDER_RADIUS_8),
+        borderRadius: BorderRadius.circular(Sizes.RADIUS_8),
         child: Image.asset(
           ImagePath.dinnerIsServed,
           width: width,
@@ -120,7 +144,9 @@ class MenuPhotosScreen extends StatelessWidget {
   }
 
   List<Widget> createImageRow(
-      {@required numberOfImages, @required imageWidth}) {
+      {@required numberOfImages,
+      @required imageWidth,
+      @required BuildContext context}) {
     List<Widget> images = [];
     List<String> imagePaths = [
       ImagePath.breakfastInBed,
@@ -133,11 +159,12 @@ class MenuPhotosScreen extends StatelessWidget {
     list.forEach((i) {
       images.add(
         InkWell(
+          onTap: () => navigateToPreviewPhotos(context),
           child: Container(
             margin: EdgeInsets.only(
                 right: (i != numberOfImages) ? Sizes.MARGIN_16 : 0),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(Sizes.BORDER_RADIUS_8),
+              borderRadius: BorderRadius.circular(Sizes.RADIUS_8),
               child: Image.asset(
                 imagePaths[i - 1],
                 width: imageWidth,
@@ -150,5 +177,9 @@ class MenuPhotosScreen extends StatelessWidget {
       );
     });
     return images;
+  }
+
+  void navigateToPreviewPhotos(BuildContext context) {
+    Router.navigator.pushNamed(Router.previewMenuPhotosScreen);
   }
 }
