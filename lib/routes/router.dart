@@ -2,7 +2,10 @@ import 'package:auto_route/auto_route_annotations.dart';
 import 'package:potbelly/screens/add_ratings_screen.dart';
 import 'package:potbelly/screens/bookmarks_screen.dart';
 import 'package:potbelly/screens/categories_screen.dart';
+import 'package:potbelly/screens/category_detail_screen.dart';
+import 'package:potbelly/screens/change_password_screen.dart';
 import 'package:potbelly/screens/filter_screen.dart';
+import 'package:potbelly/screens/find_friends_screen.dart';
 import 'package:potbelly/screens/forgot_password_screen.dart';
 import 'package:potbelly/screens/home_screen.dart';
 import 'package:potbelly/screens/login_screen.dart';
@@ -16,6 +19,7 @@ import 'package:potbelly/screens/review_rating_screen.dart';
 import 'package:potbelly/screens/root.dart';
 import 'package:potbelly/screens/search_results.dart';
 import 'package:potbelly/screens/set_location_screen.dart';
+import 'package:potbelly/screens/settings_screen.dart';
 import 'package:potbelly/screens/trending_restaurant_screen.dart';
 import 'package:meta/meta.dart';
 
@@ -45,6 +49,11 @@ class $Router {
   MenuPhotosScreen menuPhotosScreen;
   PreviewMenuPhotosScreen previewMenuPhotosScreen;
   CategoriesScreen categoriesScreen;
+
+  CategoryDetailScreen categoryDetailScreen;
+  FindFriendsScreen findFriendsScreen;
+  SettingsScreen settingsScreen;
+  ChangePasswordScreen changePasswordScreen;
 
 
 }

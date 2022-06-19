@@ -26,6 +26,10 @@ import 'package:potbelly/screens/add_ratings_screen.dart';
 import 'package:potbelly/screens/menu_photos_screen.dart';
 import 'package:potbelly/screens/preview_menu_photos.dart';
 import 'package:potbelly/screens/categories_screen.dart';
+import 'package:potbelly/screens/category_detail_screen.dart';
+import 'package:potbelly/screens/find_friends_screen.dart';
+import 'package:potbelly/screens/settings_screen.dart';
+import 'package:potbelly/screens/change_password_screen.dart';
 
 class Router {
   static const loginScreen = '/';
@@ -46,6 +50,10 @@ class Router {
   static const menuPhotosScreen = '/menu-photos-screen';
   static const previewMenuPhotosScreen = '/preview-menu-photos-screen';
   static const categoriesScreen = '/categories-screen';
+  static const categoryDetailScreen = '/category-detail-screen';
+  static const findFriendsScreen = '/find-friends-screen';
+  static const settingsScreen = '/settings-screen';
+  static const changePasswordScreen = '/change-password-screen';
   static final navigator = ExtendedNavigator();
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -71,8 +79,12 @@ class Router {
           settings: settings,
         );
       case Router.homeScreen:
+        if (hasInvalidArgs<Key>(args)) {
+          return misTypedArgsRoute<Key>(args);
+        }
+        final typedArgs = args as Key;
         return MaterialPageRoute<dynamic>(
-          builder: (_) => HomeScreen(),
+          builder: (_) => HomeScreen(key: typedArgs),
           settings: settings,
         );
       case Router.rootScreen:
@@ -100,13 +112,21 @@ class Router {
           settings: settings,
         );
       case Router.notificationsScreen:
+        if (hasInvalidArgs<Key>(args)) {
+          return misTypedArgsRoute<Key>(args);
+        }
+        final typedArgs = args as Key;
         return MaterialPageRoute<dynamic>(
-          builder: (_) => NotificationsScreen(),
+          builder: (_) => NotificationsScreen(key: typedArgs),
           settings: settings,
         );
       case Router.profileScreen:
+        if (hasInvalidArgs<Key>(args)) {
+          return misTypedArgsRoute<Key>(args);
+        }
+        final typedArgs = args as Key;
         return MaterialPageRoute<dynamic>(
-          builder: (_) => ProfileScreen(),
+          builder: (_) => ProfileScreen(key: typedArgs),
           settings: settings,
         );
       case Router.filterScreen:
@@ -146,6 +166,26 @@ class Router {
       case Router.categoriesScreen:
         return MaterialPageRoute<dynamic>(
           builder: (_) => CategoriesScreen(),
+          settings: settings,
+        );
+      case Router.categoryDetailScreen:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => CategoryDetailScreen(),
+          settings: settings,
+        );
+      case Router.findFriendsScreen:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => FindFriendsScreen(),
+          settings: settings,
+        );
+      case Router.settingsScreen:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => SettingsScreen(),
+          settings: settings,
+        );
+      case Router.changePasswordScreen:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => ChangePasswordScreen(),
           settings: settings,
         );
       default:
